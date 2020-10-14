@@ -1,5 +1,4 @@
 const express = require('express')
-const author = require('../models/author')
 const router = express.Router()
 const Author = require('../models/author')
 
@@ -31,11 +30,11 @@ router.post('/', async (req, res) => {
     try {
         const newAuthor = await author.save()
         // res.redirect(`authors/${newAuthor.id}`)
-        res.redirect(`/authors`)
+        res.redirect(`authors`)
     } catch {
         res.render('authors/new', {
             author: author,
-            errorMessage: 'Error creating Author'
+            errorMessage: `Error creating Author ${author}`
         })
     }
 })
